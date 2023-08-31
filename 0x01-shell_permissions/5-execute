@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "chmod u+x hello" > add_execute.sh
+chmod +x hello
