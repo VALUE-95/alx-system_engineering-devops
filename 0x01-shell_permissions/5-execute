@@ -1,4 +1,3 @@
 #!!/bin/bash
-add_execute.sh#!!/bin/bash
-add_execute.sh#!!/bin/bash
 add_execute.sh
+chmod u+x 5-execute
