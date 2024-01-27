@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # Displays the current running processes and the PID of the script.
 
-echo "Script PID: $$"
-ps -faux
+ps -aufx
