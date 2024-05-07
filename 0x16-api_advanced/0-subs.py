@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """
-Queries the Reddit API and returns the number of subscriber
-for a given subreddit.
+Queries the Reddit API and returns the number of subscribers
+for a given subreddit using PRAW.
 """
 
-import requests
+import praw
 
 
 def number_of_subscribers(subreddit):
     """
-    Returns the number of subscribers for a given subreddit.
+    Returns the number of subscribers for a given subreddit using PRAW.
 
     Args:
         subreddit (str): The name of the subreddit.
@@ -18,18 +18,10 @@ def number_of_subscribers(subreddit):
         int: The number of subscribers of the subreddit.
         If the subreddit is invalid, returns 0.
     """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers)
-
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data["data"]["subscribers"]
-        return subscribers
-    else:
+    reddit = praw.Reddit(user_agent="Subreddit Subscriber Count Bot")
+    try:
+        sub = reddit.subreddit(subreddit)
+        return sub.subscribers
+    except Exception as e:
+        print(f"Error: {e}")
         return 0
-
-
-if __name__ == '__main__':
-    subreddit_name = input("Enter the name of the subreddit: ")
-    print(number_of_subscribers(subreddit_name))
