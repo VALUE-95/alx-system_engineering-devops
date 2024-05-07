@@ -28,3 +28,8 @@ def number_of_subscribers(subreddit):
         return subscribers
     else:
         return 0
+
+
+if __name__ == '__main__':
+    subreddit_name = input("Enter the name of the subreddit: ")
+    print(number_of_subscribers(subreddit_name)))
