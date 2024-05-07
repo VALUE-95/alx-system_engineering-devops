@@ -31,8 +31,3 @@ def top_ten(subreddit):
             print("No posts found.")
     else:
         print(None)
-
-
-if __name__ == '__main__':
-    subreddit_name = input("Enter the name of the subreddit: ")
-    top_ten(subreddit_name)
