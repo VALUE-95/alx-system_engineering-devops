@@ -1,6 +1,12 @@
 # Fix 500 error when a GET HTTP method is requested to Apache web server.
 
-exec {'Fix wordpress site':
-  command => 'sudo sed -i "s/.phpp/.php/" /var/www/html/wp-settings.php',
-  provider => shell,
+$settings_file='/var/www/html/wp-settings.php'
+file { $settings_file:
+  ensure => file,
+}
+
+exec {'fix typo in settings config':
+  path    => ['/bin/', '/usr/bin/', '/usr/sbin/'],
+  command => "sed -i s/phpp/php/g ${settings_file}",
+  require => File[$settings_file],
 }
